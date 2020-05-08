@@ -154,6 +154,7 @@
     <ClCompile Include="Hotel-Project.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Guest.h" />
     <ClInclude Include="Hotel.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Room.h" />

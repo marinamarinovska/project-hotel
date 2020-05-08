@@ -20,14 +20,14 @@ int main()
 	do 
 	{
 		system("cls");
-		std::cout << " Hotel " << std::endl;
-		std::cout << "Manage Rooms" << std::endl;
-		std::cout << "Check in Room" << std::endl;
-		std::cout << "Available Rooms" << std::endl;
-		std::cout << "Search with your name" << std::endl;
-		std::cout << "Check out Room" << std::endl;
-		std::cout << "Àll guests in Hotel" << std::endl;
-		std::cout << "Exit" << std::endl;
+		std::cout << "Hotel " << std::endl;
+		std::cout << "1) Manage Rooms" << std::endl;
+		std::cout << "2) Check in Room" << std::endl;
+		std::cout << "3) Available Rooms" << std::endl;
+		std::cout << "4) Search with your name" << std::endl;
+		std::cout << "5) Check out Room" << std::endl;
+		std::cout << "6) Àll guests in Hotel" << std::endl;
+		std::cout << "9) Exit" << std::endl;
 		std::cout << "Enter your option: " << std::endl;
 		std::cin >> option;
 		switch (option)

@@ -3,11 +3,10 @@
 #include<string.h>
 #include<conio.h>
 #include "Hotel.h"
+#include "Guest.h"
 
 #pragma warning(disable : 4996)
 #define max 100
-
-
 
 class Room
 {
