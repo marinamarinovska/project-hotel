@@ -1,96 +1,35 @@
 #include <iostream>
-#include "Person.h"
 #include "Hotel.h"
 #include "Room.h" 
-#include<string.h>
+#include <fstream>
 #include<conio.h>
-
+#include "Hotel-Project.h"
+#include <string>
 #pragma warning(disable : 4996)
 
+void main() {
+	
+	std::string line;
+	std::ifstream in( "C:\\Proekti\\project-hotel\\Hotel-Project\\reservations.txt");
 
-int main()
-{
-	class Hotel hotel;
-	int i, j, option, rnum;
-	char ch;
-	char guestname[100]; //custname
+	while (std::getline(in, line)) { //LINE = ROOM	FROM DATE 	TO DATE 	NOTE	[Posleden tab]	GUEST
+		int room, guest;
+		std::string from_date, to_date, note;
 
-	system("cls");
+		//if (in.is_open())
+		//std::cout << in.rdbuf();
+		size_t lasttab = line.find_last_of('\t'); // Poslednia tab
+		size_t beforecomment = line.find_last_of('\t', lasttab);
+		size_t beforedateto = line.find_last_of('\t', beforecomment);
+		size_t beforedatefrom = line.find_last_of('\t', beforedateto);
 
-	do 
-	{
-		system("cls");
-		std::cout << "Hotel " << std::endl;
-		std::cout << "1) Manage Rooms" << std::endl;
-		std::cout << "2) Check in Room" << std::endl;
-		std::cout << "3) Available Rooms" << std::endl;
-		std::cout << "4) Search with your name" << std::endl;
-		std::cout << "5) Check out Room" << std::endl;
-		std::cout << "6) Àll guests in Hotel" << std::endl;
-		std::cout << "9) Exit" << std::endl;
-		std::cout << "Enter your option: " << std::endl;
-		std::cin >> option;
+		room = atoi(line.substr(0, beforedatefrom).c_str());
+		from_date = line.substr(beforedatefrom, beforedateto).c_str();
+		to_date = line.substr(beforedateto, beforecomment).c_str();
 
-		switch (option)
-		{
-		case 1:
-			roomManag();
-			break;
-		case 2:
-			if (scount == 0)
-			{
-				std::cout << "Rooms of this date is not available. Add the rooms first." << std::endl;
-				getch();
-			}
-			else
-				hotel.checkIn();
-			break;
-		case 3:
-			if (scount == 0)
-			{
-				std::cout << "Rooms of this date is not available. Add the rooms first." << std::endl;
-				getch();
-			}
-			else
-				hotel.availabilitRoom();
-			break;
-		case 4:
-			if (scount == 0)
-			{
-				std::cout << "Rooms of this date is not available. Add the rooms first." << std::endl;
-				getch();
-			}
-			else
-			{
-				std::cout << "Enter your name: " << std::endl;
-				std::cin >> guestname;
-				hotel.reportGuest(guestname);
-			}
-			break;
-		case 5:
-			if (scount == 0)
-			{
-				std::cout << "Rooms of this date is not available. Add the rooms first." << std::endl;
-				getch();
-			}
-			else
-			{
-				std::cout << "Enter Room Number : " << std::endl;
-				std::cin >> rnum;
-				hotel.checkOut(rnum);
-			}
-			break;
-		case 6:
-			hotel.greport();
-			break;
-		case 7:
-			std::cout << "Ready" << std::endl;
-			break;
-		default:
-			std::cout << "Please enter your correct option" << std::endl;
-			break;
-		}
-	} while (option != 7);
+		std::cout << room << from_date << to_date << std::endl;
 
-	getch();
+	}
+	in.close();
 }
+		

@@ -155,9 +155,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Guest.h" />
+    <ClInclude Include="Hotel-Project.h" />
     <ClInclude Include="Hotel.h" />
-    <ClInclude Include="Person.h" />
     <ClInclude Include="Room.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="reservations.txt" />
+    <Text Include="rooms.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
