@@ -30,6 +30,7 @@ int main()
 		std::cout << "9) Exit" << std::endl;
 		std::cout << "Enter your option: " << std::endl;
 		std::cin >> option;
+
 		switch (option)
 		{
 		case 1:
