@@ -157,9 +157,9 @@
     <ClInclude Include="Guest.h" />
     <ClInclude Include="Hotel-Project.h" />
     <ClInclude Include="Hotel.h" />
-    <ClInclude Include="Room.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="newReservations.txt" />
     <Text Include="reservations.txt" />
     <Text Include="rooms.txt" />
   </ItemGroup>
