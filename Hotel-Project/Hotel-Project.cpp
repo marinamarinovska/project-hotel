@@ -23,20 +23,82 @@ std::vector<Room> readRooms();
 std::vector<Reservation> readReservations();
 
 void main() {
+	bool isOpen = false;
 	std::vector<Room> rooms = readRooms();
+	std::vector<Reservation> reservations;
 	char command[50];
 	do {
 		std::cout << "Type a command" << std::endl;
 		std::cin >> command;
 		if (std::strcmp(command, "open") == 0) {
-			std::vector<Reservation> reservation = readReservations();
+			isOpen = true;
+			reservations = readReservations();
+		}
+		if (std::strcmp(command, "reservation") == 0 && isOpen) {
+			int room, guests;
+			time_t date_from, date_to;
+			char note[50];
+			char date[11];
+			std::cout << "Enter room number" << std::endl;
+			std::cin >> room;
+			std::cout << "Enter check-in date in format YYYY-MM-DD" << std::endl;
+			std::cin >> date;
+			
+				struct tm tmdate = { 0 };
+				tmdate.tm_year = atoi(&date[0]) - 1900;
+				tmdate.tm_mon = atoi(&date[5]) - 1;
+				tmdate.tm_mday = atoi(&date[8]);
+				date_from = mktime(&tmdate);
+		
+			std::cout << "Enter check-out date in format YYYY-MM-DD" << std::endl;
+			std::cin >> date;
+			
+			
+				struct tm tmDate = { 0 };
+				tmDate.tm_year = atoi(&date[0]) - 1900;
+				tmDate.tm_mon = atoi(&date[5]) - 1;
+				tmDate.tm_mday = atoi(&date[8]);
+				date_to = mktime(&tmDate);
+
+			std::cout << "Enter a comment" << std::endl;
+			std::cin >> note;
+			std::cout << "Enter number of guests" << std::endl;
+			std::cin >> guests;
+
+			char myChoise;
+			do {
+				std::cout << "Do you want to save your reservation? Y/N?"<<::std::endl;
+				std::cin >> myChoise;
+			} while (myChoise != 'Y' && myChoise != 'N' && myChoise != 'y' && myChoise != 'n');
+
+			if (myChoise == 'y' || myChoise == 'Y') {
+				Reservation tmpReserv;
+				tmpReserv.room = room;
+				tmpReserv.date_from = date_from;
+				tmpReserv.date_to = date_to;
+				tmpReserv.note = note;
+				tmpReserv.guests = guests;
+				reservations.push_back(tmpReserv);
+				std::cout << "Reservations is add successfully" << std::endl;
+			}
+			else {
+				std::cout << "You canceled you reservation!";
+			}
 		}
 		if (std::strcmp(command, "clear") == 0) {
 			system("cls");
 		}
 		if (std::strcmp(command, "help") == 0) {
 			std::cout << "Here are list of commands that you can use:" << std::endl << std::endl;
-			std::cout << "open - This will open default file for all reservations" << std::endl;
+			if (!isOpen)
+			{
+				std::cout << "open - This will open default file for all reservations" << std::endl;
+			} 
+			else 
+			{
+				std::cout << "reservation - This will add new reservation" << std::endl;
+				std::cout << "save - This will save to default file all reservations" << std::endl;
+			}
 			std::cout << "clear - This will clear the terminal" << std::endl;
 			std::cout << "help - This will show this screen" << std::endl;
 			std::cout << "exit - This will close the app" << std::endl;
@@ -118,8 +180,6 @@ std::vector<Reservation> readReservations(){
 			countParams++;
 		}
 
-		std::cout << room << from_date << to_date << note << guest << std::endl;
-		
 		
 		Reservation cur_reserve;
 		cur_reserve.room = room;
