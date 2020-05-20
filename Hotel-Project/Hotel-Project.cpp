@@ -104,7 +104,44 @@ void main() {
 			std::cout << "exit - This will close the app" << std::endl;
 		}
 	} while (std::strcmp(command, "exit") > 0);
+	
+	char myChoise;
+	do {
+		std::cout << "Do you want to save or save as your reservation? Y/N?" << ::std::endl;
+		std::cin >> myChoise;
+	} while (myChoise != 'Y' && myChoise != 'y' && myChoise != 'N' && myChoise != 'n');
+
+	if (myChoise == 'Y' || myChoise == 'y') {
+		std::cout << "Do you want to save or save as your reservation? S(save)/Sas(save as)?" << std::endl;
+		std::cin >> myChoise;
+		if (myChoise == 'S' || myChoise == 's') {
+			std::ofstream outputfile("reservations.txt");
+			std::vector<int>temp;
+			temp.push_back(1);
+			temp.push_back(2);
+			temp.push_back(3);
+			for (int i = 0; i < temp.size(); i++)
+				outputfile << temp[i] << "\n";
+			//zapisva vektor vuv fail
+			//std::ofstream fout("reservations.txt", std::ios_base::app | std::ios_base::binary);
+			//for (const auto& e : reservations) fout << e << "\n";
+		}
+		else {
+			std::cout << "Write text to save as on file." << std::endl;
+			std::ofstream fout("new-reservation.txt", std::ios_base::app | std::ios_base::binary);
+			fout.write((char*)&reservations, sizeof reservations);
+			std::ofstream writeFile;
+
+			/*writeFile.open("Mesh.bin", std::ios::out | std::ios::binary);
+			if (!newVertexArray.empty())
+				writeFile.write((char*)&newVertexArray[0], newVertexArray.size() * sizeof(float));*/
+		}
+	}
+	else {
+		std::cout << "Your reservation is not save." << std::endl;
+	}
 }
+
 
 std::vector<Room> readRooms() {
 	std::vector<Room> rooms;
