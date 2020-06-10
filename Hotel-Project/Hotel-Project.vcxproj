@@ -154,14 +154,12 @@
     <ClCompile Include="Hotel-Project.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Guest.h" />
-    <ClInclude Include="Hotel-Project.h" />
-    <ClInclude Include="Hotel.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="newReservations.txt" />
     <Text Include="reservations.txt" />
     <Text Include="rooms.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Reservation.h" />
+    <ClInclude Include="Room.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -20,23 +20,19 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hotel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Guest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Hotel-Project.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="reservations.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="rooms.txt">
       <Filter>Resource Files</Filter>
     </Text>
-    <Text Include="newReservations.txt" />
+    <Text Include="reservations.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Reservation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
